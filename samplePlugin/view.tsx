@@ -1,7 +1,7 @@
+import Calendar from "components/calendar";
 import { App, Modal } from "obsidian";
 import * as React from "react";
 import { createRoot, Root } from "react-dom/client";
-import ReactView from "./ReactView";
 
 export class DatePickerView extends Modal {
 	root: Root;
@@ -12,7 +12,9 @@ export class DatePickerView extends Modal {
 	}
 
 	async onOpen() {
-		this.root.render(<ReactView />);
+		this.root.render(
+			<Calendar onClick={(date: string) => console.log(date)} />
+		);
 	}
 
 	async onClose() {

@@ -12,6 +12,10 @@
 	grid-auto-rows: minmax(0, 1fr);
 	width: 100%;
 }
+.PickerHeaderMonthYearTitle {
+	font-size: var(--h3);
+	color: var(--text-accent);
+}
 
 .PickerHeaderButton {
 	display: flex;
@@ -85,4 +89,5 @@
 .PickerDaysItemActive:hover,
 .PickerDaysItemActive:active {
 	background-color: var(--text-accent);
+	color: var(--text-on-accent);
 }

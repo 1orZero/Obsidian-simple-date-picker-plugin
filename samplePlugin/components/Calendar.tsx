@@ -105,7 +105,7 @@ function CalendarHeader({
 				onClick={prevCallback}
 				className="PickerHeaderButton"
 			>{`<`}</div>
-			<label>{`${month} ${year}`}</label>
+			<label className="PickerHeaderMonthYearTitle">{`${month} ${year}`}</label>
 			<div
 				onClick={nextCallback}
 				className="PickerHeaderButton"
