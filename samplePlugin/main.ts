@@ -20,7 +20,6 @@ export default class MyPlugin extends Plugin {
 			name: "Open date picker",
 			checkCallback: (checking: boolean) => {
 				// Conditions to check
-				console.log(checking);
 				const markdownView =
 					this.app.workspace.getActiveViewOfType(MarkdownView);
 				if (markdownView) {
@@ -36,13 +35,14 @@ export default class MyPlugin extends Plugin {
 				}
 			},
 			editorCallback: (editor: Editor, view: MarkdownView) => {
-				// console.log(editor.getCursor());
-				// editor.replaceSelection('Sample Editor Command');
 
-				// const test = () => {
-				// 	editor.replaceRange("insert ", editor.getCursor());
-				// };
-				new DatePickerView(this.app).open();
+				const insertDate = (date:string) => {
+					editor.replaceRange(`[[${date}]]`, editor.getCursor());
+				};
+				// close the modal
+				view.unload();
+
+				new DatePickerView(this.app, insertDate ).open();
 			},
 		});
 	}

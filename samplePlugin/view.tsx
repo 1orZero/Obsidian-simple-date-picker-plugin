@@ -5,16 +5,16 @@ import { createRoot, Root } from "react-dom/client";
 
 export class DatePickerView extends Modal {
 	root: Root;
-	constructor(app: App) {
+	onClick: (date: string) => void;
+	constructor(app: App, onClick: (date: string) => void) {
 		super(app);
 		const container = this.containerEl.children[1];
 		this.root = createRoot(container!);
+		this.onClick = onClick;
 	}
 
 	async onOpen() {
-		this.root.render(
-			<Calendar onClick={(date: string) => console.log(date)} />
-		);
+		this.root.render(<Calendar onClick={this.onClick} />);
 	}
 
 	async onClose() {

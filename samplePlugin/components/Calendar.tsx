@@ -151,23 +151,32 @@ function Days({
 	let active = false;
 	const classObject = () =>
 		active ? "PickerDaysItemActive" : "PickerDaysItemInactive";
+	const renderDaysArray = daysArray.map((day, index) => {
+		if (day.day === 1) {
+			active = !active;
+		}
+		return {
+			day: day.day,
+			dayjs: day.dayjs,
+			className: classObject(),
+			onClick: active
+				? () => onClick(day.dayjs.format("YYYY-MM-DD"))
+				: () => null,
+		};
+	});
+	console.log(renderDaysArray);
 
 	const onClickHandler = (day: Dayjs) => {
 		const result = onClick(day.format("YYYY-MM-DD"));
-		console.log(active ? result : null);
-		// return active ? result : null;
 	};
 	return (
 		<div className="PickerDaysContainer">
-			{daysArray.map((day, index) => {
-				if (day.day === 1) {
-					active = !active;
-				}
+			{renderDaysArray.map((day, index) => {
 				return (
 					<div
 						key={index}
-						className={classObject()}
-						onClick={() => onClickHandler(day.dayjs)}
+						className={day.className}
+						onClick={() => day.onClick()}
 					>
 						{day.day}
 					</div>
