@@ -39,10 +39,8 @@ export default class MyPlugin extends Plugin {
 				const insertDate = (date:string) => {
 					editor.replaceRange(`[[${date}]]`, editor.getCursor());
 				};
-				// close the modal
-				view.unload();
 
-				new DatePickerView(this.app, insertDate ).open();
+				 new DatePickerView(this.app, insertDate ).open();
 			},
 		});
 	}

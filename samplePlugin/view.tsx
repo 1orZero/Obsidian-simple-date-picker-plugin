@@ -10,7 +10,10 @@ export class DatePickerView extends Modal {
 		super(app);
 		const container = this.containerEl.children[1];
 		this.root = createRoot(container!);
-		this.onClick = onClick;
+		this.onClick = (date: string) => {
+			onClick(date);
+			this.close();
+		};
 	}
 
 	async onOpen() {
